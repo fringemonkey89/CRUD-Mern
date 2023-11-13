@@ -2,11 +2,11 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 
-const FoodModel = require('./models/Food.js')
+const FoodModel = require('./models/Food')
 
 app.use(express.json())
 
-mongoose.connect('mongodb://localhost:27017/crud', {
+mongoose.connect('mongodb://127.0.0.1:27017/crud', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
