@@ -5,7 +5,7 @@ import './App.css';
 function App() {
 
 // these lines declare two state variables foodname and days using the useState hook
-//foodname is initialized with an ampty string and days is initialized with 0
+//foodname is initialized with an empty string and days is initialized with 0
 
 //hooks are built in functions that allow you to use state and other react features
 
@@ -22,7 +22,7 @@ function App() {
 
   //runs after the component mounts
   useEffect(() => {
-    axios.get('http://localhost:3001/read').then((response)=> {
+    axios.get('/read').then((response)=> {
       setFoodList(response.data)
     })
   }, [])
@@ -34,7 +34,7 @@ function App() {
   //components rendered output are changed
 
   const addToList = () => {
-    axios.post('http://localhost:3001/insert', {
+    axios.post('/insert', {
       foodName: foodName,
       days: days
     })
@@ -53,7 +53,7 @@ function App() {
         <button onClick={addToList}>Add to List</button>
         <h1>Food List</h1>
         {foodList.map((val, key) => {
-          return <div>
+          return <div key = {key}>
             <h1>{val.foodName}</h1><h1>{val.daysSinceIAte}</h1>{" "}
           </div>
         })}
@@ -61,5 +61,6 @@ function App() {
     
   );
 }
+//https://zoom.us/rec/share/xendMsd_zD24RDuqW94Ae0CwgZIl_7-289HquZgvfmxuQg1G-O0OrR792wnsPOyA.rAxJHZK2_vE3_F4L
 
 export default App;

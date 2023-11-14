@@ -38,13 +38,16 @@ app.post('/insert', async (req, res) => {
 
 app.get('/read', async (req, res) => {
     
-    FoodModel.find({}, (err, result) => {
-        if (err) {
-            res.sendsend(err)
-        }
-        res.send(result)
-    })
+   
+    try{
+        const foodData = await FoodModel.find({})
+        res.send(foodData)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ message: 'something happened'})
+    }
+    
 })
-app.listen(3000, () => {
+app.listen(3001, () => {
     console.log('server running on port 3000')
 })
